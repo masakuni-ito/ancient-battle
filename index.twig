@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<style>
+body {
+	margin: auto;
+	padding: 0px;
+	color: #6A3386;
+	text-align: center;
+}
+
+.content {
+	margin: 100px auto auto auto;
+}
+
+</style>
+<title></title>
+</head>
+<body>
+<div class="content">
+	{% if you|length == 0 %}
+		<h2>You VS {{ enemy.name }}</h2>
+	{% else %}
+		<h2>{{ you.name }} VS {{ enemy.name }}</h2>
+	{% endif %}
+	{% if you|length != 0 %}
+	<div>
+	<strong>{{ you.name }}のステータス</strong><br />
+	HP：{{ you.hp }}<br />
+	攻撃力：{{ you.attack }}<br />
+	防御力：{{ you.defense }}<br />
+	素早さ：{{ you.agility }}<br />
+	</div>
+	{% endif %}
+	{% if enemy|length != 0 %}
+	<div>
+	<strong>{{ enemy.name }}のステータス</strong><br />
+	HP：{{ enemy.hp }}<br />
+	攻撃力：{{ enemy.attack }}<br />
+	防御力：{{ enemy.defense }}<br />
+	素早さ：{{ enemy.agility }}<br />
+	</div>
+	{% endif %}
+	{% if you|length == 0 %}
+	<form method="post" action="./">
+	<input type="text" name="your_name">
+	<input type="submit" value="目覚めよ">
+	</form>
+	{% endif %}
+	<hr />
+	{% if winning %}
+		<div>{{ winning }} 連勝中</div>
+	{% endif %}
+	{% for message in messages %}
+	{{ message }}<br />
+	{% endfor %}
+	{% if you|length != 0 %}
+	<a href="./">Next>></a>
+	{% endif %}
+</div>
+</body>
+</html>
